@@ -20,6 +20,10 @@ public partial class FirstPage : ContentPage
 
         var x = MovieItem.Title;
         var y = 1;
-        await Shell.Current.GoToAsync("SecondPage");
+        var navigationParameter = new Dictionary<string, object>
+    {
+        { "selectedMovie", MovieItem }
+    };
+        await Shell.Current.GoToAsync("SecondPage", navigationParameter);
     }
 }

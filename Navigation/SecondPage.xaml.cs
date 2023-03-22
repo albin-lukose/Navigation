@@ -1,14 +1,27 @@
 namespace Navigation;
 
+[QueryProperty("MovieItem", "selectedMovie")]
 public partial class SecondPage : ContentPage
 {
-	public SecondPage()
+    Movie movieItem;
+    public Movie MovieItem
+    {
+        get => movieItem;
+        set => movieItem = value;
+    }
+    public SecondPage()
 	{
 		InitializeComponent();
 	}
 
     private async void OnCounterClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("ThirdPage");
+        var x = MovieItem.Title;
+        var y = 1;
+        var navigationParameter = new Dictionary<string, object>
+    {
+        { "selectedMovie", MovieItem }
+    };
+        await Shell.Current.GoToAsync("ThirdPage", navigationParameter);
     }
 }
